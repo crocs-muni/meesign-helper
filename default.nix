@@ -8,7 +8,7 @@ maven.buildMavenPackage rec {
 
   src = ./.;
 
-  mvnHash = "sha256-9c9YFmfzHJeFNDKjzohobVubHIy21CY8nqLAGj6S528=";
+  mvnHash = "sha256-DAhOuEiULIJhfq5RRmryju63NCUz/GTrGqO9dHu3jFE=";
 
   mvnParameters = lib.escapeShellArgs [
     "compile"
