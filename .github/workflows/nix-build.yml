@@ -6,18 +6,15 @@ on:
 
 
 jobs:
-  standalone:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
 
-    name: Build standalone ${{ matrix.library }}
-    steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+    - uses: DeterminateSystems/nix-installer-action@v13
+      with:
+        diagnostic-endpoint: ""
 
-      - uses: DeterminateSystems/nix-installer-action@v13
-        with:
-          diagnostic-endpoint: ""
-
-      - name: Build
-        run: nix build
+    - name: Build via Nix
+      run: nix build
