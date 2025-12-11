@@ -1,0 +1,23 @@
+name: Nix
+
+on:
+  push:
+  workflow_dispatch:
+
+
+jobs:
+  standalone:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    name: Build standalone ${{ matrix.library }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@v13
+        with:
+          diagnostic-endpoint: ""
+
+      - name: Build
+        run: nix build
